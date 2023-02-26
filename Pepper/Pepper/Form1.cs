@@ -112,7 +112,7 @@ namespace Pepper
 
         #endregion
 
-        #region - Методы взаимодействия с окном
+        #region window - Методы взаимодействия с окном
 
         private void button_wrap_Click(object sender, EventArgs e)
         {
