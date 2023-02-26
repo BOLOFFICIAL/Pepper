@@ -92,7 +92,27 @@ namespace Pepper
             soundplayer.Play();
         }
 
+        public List<string> GetFilesInDirectory(string directoryPath)
+        {
+            List<string> fileList = new List<string>();
+            try
+            {
+                string[] fileEntries = Directory.GetFiles(directoryPath);
+                foreach (string fileName in fileEntries)
+                {
+                    fileList.Add(fileName);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+            return fileList;
+        }
+
         #endregion
+
+        #region - Методы взаимодействия с окном
 
         private void button_wrap_Click(object sender, EventArgs e)
         {
@@ -129,6 +149,8 @@ namespace Pepper
             Sound("Click");
             this.Close();
         }
+
+        #endregion
 
         #region moving - Методы перемещения окна программы
 
@@ -172,26 +194,7 @@ namespace Pepper
 
         #endregion
 
-        #region menu - Методы меню
-
-        public List<string> GetFilesInDirectory(string directoryPath)
-        {
-            List<string> fileList = new List<string>();
-            try
-            {
-                string[] fileEntries = Directory.GetFiles(directoryPath);
-                foreach (string fileName in fileEntries)
-                {
-                    fileList.Add(fileName);
-                }
-            }
-            catch (Exception e)
-            {
-                // обработка ошибок
-                Console.WriteLine("Error: " + e.Message);
-            }
-            return fileList;
-        }
+        #region menu - Методы меню  
 
         private void button_open_Click(object sender, EventArgs e)
         {
@@ -202,12 +205,8 @@ namespace Pepper
                 if (result == DialogResult.OK)
                 {
                     directory = new FileInfo(openFileDialog1.FileName).DirectoryName;
-
                     files_directory = GetFilesInDirectory(directory);
-
                     index_file_in_directory = files_directory.IndexOf(openFileDialog1.FileName);
-
-                    MessageBox.Show(directory);
                     label_title.Visible = false;
                     capture = new VideoCapture(openFileDialog1.FileName);
                     frame_count = capture.FrameCount;
@@ -223,18 +222,12 @@ namespace Pepper
                     if (ispicture)
                     {
                         pictureBox_view.Image = Image.FromFile(openFileDialog1.FileName);
-                        //button_left.Visible = false;
                         button_pause.Text = "Распознать";
-                        //button_right.Visible = false;
                         capture.Dispose();
                         capture = null;
                     }
                     else
                     {
-                        //if (pictureBox_view.Image.Width * pictureBox_view.Image.Height > 921600)
-                        //{
-                        //    MessageBox.Show("Данное видео имеет слишком большое разрешение что может привести к торможению программы", null, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        //}
                         button_left.Visible = true;
                         button_pause.Text = "Просмотр";
                         button_right.Visible = true;
@@ -245,7 +238,6 @@ namespace Pepper
                         {
                             capture.Read(frame);
                             pictureBox_view.Image = BitmapConverter.ToBitmap(frame);
-                            //pictureBox_view.Image = Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame));
                         }
                     }
                     start = true;
