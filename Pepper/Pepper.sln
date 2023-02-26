@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pepper", "Pepper\Pepper.csproj", "{48C2790E-ACB0-4D5D-BAB7-D9CF46D8CB2C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yolov5Net.Scorer", "Yolov5Net.Scorer\Yolov5Net.Scorer.csproj", "{24FB5CB6-6800-4B62-B424-F7E106B032E8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48C2790E-ACB0-4D5D-BAB7-D9CF46D8CB2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C2790E-ACB0-4D5D-BAB7-D9CF46D8CB2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C2790E-ACB0-4D5D-BAB7-D9CF46D8CB2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C2790E-ACB0-4D5D-BAB7-D9CF46D8CB2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24FB5CB6-6800-4B62-B424-F7E106B032E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24FB5CB6-6800-4B62-B424-F7E106B032E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24FB5CB6-6800-4B62-B424-F7E106B032E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FB5CB6-6800-4B62-B424-F7E106B032E8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D4EF2C7-7B99-4155-AE25-7C505177F5D5}
+	EndGlobalSection
+EndGlobal
