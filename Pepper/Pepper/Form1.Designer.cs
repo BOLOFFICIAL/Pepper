@@ -612,7 +612,6 @@ namespace Pepper
 
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.button_wrap = new System.Windows.Forms.Button();
             this.button_unwrap = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
@@ -662,7 +661,7 @@ namespace Pepper
             this.button_wrap.BackColor = System.Drawing.SystemColors.Control;
             this.button_wrap.FlatAppearance.BorderSize = 0;
             this.button_wrap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_wrap.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Bold);
+            this.button_wrap.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_wrap.ForeColor = System.Drawing.Color.DarkRed;
             this.button_wrap.Location = new System.Drawing.Point(791, 0);
             this.button_wrap.Margin = new System.Windows.Forms.Padding(0);
@@ -680,7 +679,7 @@ namespace Pepper
             this.button_unwrap.BackColor = System.Drawing.SystemColors.Control;
             this.button_unwrap.FlatAppearance.BorderSize = 0;
             this.button_unwrap.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_unwrap.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_unwrap.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_unwrap.ForeColor = System.Drawing.Color.DarkRed;
             this.button_unwrap.Location = new System.Drawing.Point(824, 0);
             this.button_unwrap.Margin = new System.Windows.Forms.Padding(0);
@@ -698,7 +697,7 @@ namespace Pepper
             this.button_close.BackColor = System.Drawing.SystemColors.Control;
             this.button_close.FlatAppearance.BorderSize = 0;
             this.button_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_close.Font = new System.Drawing.Font("Cascadia Mono", 8.25F);
+            this.button_close.Font = new System.Drawing.Font("Cascadia Mono", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button_close.ForeColor = System.Drawing.Color.DarkRed;
             this.button_close.Location = new System.Drawing.Point(857, 0);
             this.button_close.Margin = new System.Windows.Forms.Padding(0);
@@ -712,8 +711,8 @@ namespace Pepper
             // 
             // panel_main
             // 
-            this.panel_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel_main.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_main.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.panel_main.Controls.Add(this.panel_menu);
@@ -738,8 +737,8 @@ namespace Pepper
             // 
             // panel_settings
             // 
-            this.panel_settings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel_settings.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_settings.BackColor = System.Drawing.SystemColors.Control;
             this.panel_settings.Controls.Add(this.checkBox_qualitative);
@@ -763,56 +762,60 @@ namespace Pepper
             // 
             // checkBox_qualitative
             // 
-            this.checkBox_qualitative.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBox_qualitative.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox_qualitative.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_qualitative.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.checkBox_qualitative.Location = new System.Drawing.Point(23, 354);
             this.checkBox_qualitative.Name = "checkBox_qualitative";
             this.checkBox_qualitative.Size = new System.Drawing.Size(867, 30);
             this.checkBox_qualitative.TabIndex = 16;
             this.checkBox_qualitative.Text = "Качественные";
             this.checkBox_qualitative.UseVisualStyleBackColor = true;
+            this.checkBox_qualitative.CheckedChanged += new System.EventHandler(this.checkBox_qualitative_CheckedChanged);
             // 
             // checkBox_cracking_pulp
             // 
-            this.checkBox_cracking_pulp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBox_cracking_pulp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox_cracking_pulp.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_cracking_pulp.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.checkBox_cracking_pulp.Location = new System.Drawing.Point(23, 318);
             this.checkBox_cracking_pulp.Name = "checkBox_cracking_pulp";
             this.checkBox_cracking_pulp.Size = new System.Drawing.Size(867, 30);
             this.checkBox_cracking_pulp.TabIndex = 15;
             this.checkBox_cracking_pulp.Text = "Растресканные до мякоти";
             this.checkBox_cracking_pulp.UseVisualStyleBackColor = true;
+            this.checkBox_cracking_pulp.CheckedChanged += new System.EventHandler(this.checkBox_cracking_pulp_CheckedChanged);
             // 
             // checkBox_alternariosis
             // 
-            this.checkBox_alternariosis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBox_alternariosis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox_alternariosis.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_alternariosis.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.checkBox_alternariosis.Location = new System.Drawing.Point(23, 282);
             this.checkBox_alternariosis.Name = "checkBox_alternariosis";
             this.checkBox_alternariosis.Size = new System.Drawing.Size(867, 30);
             this.checkBox_alternariosis.TabIndex = 14;
             this.checkBox_alternariosis.Text = "Альтернариозные";
             this.checkBox_alternariosis.UseVisualStyleBackColor = true;
+            this.checkBox_alternariosis.CheckedChanged += new System.EventHandler(this.checkBox_alternariosis_CheckedChanged);
             // 
             // checkBox_rot
             // 
-            this.checkBox_rot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.checkBox_rot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkBox_rot.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_rot.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.checkBox_rot.Location = new System.Drawing.Point(23, 246);
             this.checkBox_rot.Name = "checkBox_rot";
             this.checkBox_rot.Size = new System.Drawing.Size(867, 30);
             this.checkBox_rot.TabIndex = 13;
             this.checkBox_rot.Text = "Гнилые";
             this.checkBox_rot.UseVisualStyleBackColor = true;
+            this.checkBox_rot.CheckedChanged += new System.EventHandler(this.checkBox_rot_CheckedChanged);
             // 
             // radioButton_dark
             // 
             this.radioButton_dark.AutoSize = true;
-            this.radioButton_dark.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton_dark.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.radioButton_dark.Location = new System.Drawing.Point(271, 114);
             this.radioButton_dark.Name = "radioButton_dark";
             this.radioButton_dark.Size = new System.Drawing.Size(127, 25);
@@ -825,7 +828,7 @@ namespace Pepper
             // 
             this.radioButton_light.AutoSize = true;
             this.radioButton_light.Checked = true;
-            this.radioButton_light.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.radioButton_light.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.radioButton_light.Location = new System.Drawing.Point(129, 114);
             this.radioButton_light.Name = "radioButton_light";
             this.radioButton_light.Size = new System.Drawing.Size(136, 25);
@@ -837,7 +840,7 @@ namespace Pepper
             // 
             // label_theme
             // 
-            this.label_theme.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_theme.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_theme.Location = new System.Drawing.Point(0, 114);
             this.label_theme.Name = "label_theme";
             this.label_theme.Size = new System.Drawing.Size(120, 25);
@@ -847,9 +850,9 @@ namespace Pepper
             // 
             // label_peppers
             // 
-            this.label_peppers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label_peppers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_peppers.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_peppers.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_peppers.Location = new System.Drawing.Point(0, 192);
             this.label_peppers.Name = "label_peppers";
             this.label_peppers.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -860,10 +863,10 @@ namespace Pepper
             // 
             // numericUpDown_speed
             // 
-            this.numericUpDown_speed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.numericUpDown_speed.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericUpDown_speed.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown_speed.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.numericUpDown_speed.Location = new System.Drawing.Point(129, 78);
             this.numericUpDown_speed.Minimum = new decimal(new int[] {
             1,
@@ -881,7 +884,7 @@ namespace Pepper
             // 
             // label_speed
             // 
-            this.label_speed.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_speed.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_speed.Location = new System.Drawing.Point(0, 73);
             this.label_speed.Name = "label_speed";
             this.label_speed.Size = new System.Drawing.Size(120, 35);
@@ -891,10 +894,10 @@ namespace Pepper
             // 
             // textBox_path
             // 
-            this.textBox_path.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.textBox_path.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_path.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox_path.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox_path.Location = new System.Drawing.Point(129, 42);
             this.textBox_path.Name = "textBox_path";
             this.textBox_path.Size = new System.Drawing.Size(749, 26);
@@ -903,7 +906,7 @@ namespace Pepper
             // 
             // label_path
             // 
-            this.label_path.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_path.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_path.Location = new System.Drawing.Point(0, 38);
             this.label_path.Name = "label_path";
             this.label_path.Size = new System.Drawing.Size(123, 35);
@@ -913,9 +916,9 @@ namespace Pepper
             // 
             // label_app
             // 
-            this.label_app.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label_app.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.label_app.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_app.Font = new System.Drawing.Font("Cascadia Mono", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_app.Location = new System.Drawing.Point(0, 3);
             this.label_app.Name = "label_app";
             this.label_app.Padding = new System.Windows.Forms.Padding(0, 0, 0, 3);
@@ -929,7 +932,7 @@ namespace Pepper
             this.button_save_settings.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.button_save_settings.FlatAppearance.BorderSize = 0;
             this.button_save_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_save_settings.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_save_settings.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_save_settings.Location = new System.Drawing.Point(0, 439);
             this.button_save_settings.Name = "button_save_settings";
             this.button_save_settings.Size = new System.Drawing.Size(890, 50);
@@ -965,7 +968,7 @@ namespace Pepper
             this.button_open.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_open.FlatAppearance.BorderSize = 0;
             this.button_open.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_open.Font = new System.Drawing.Font("Cascadia Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_open.Font = new System.Drawing.Font("Cascadia Mono", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_open.Location = new System.Drawing.Point(323, 53);
             this.button_open.Name = "button_open";
             this.button_open.Size = new System.Drawing.Size(244, 44);
@@ -981,7 +984,7 @@ namespace Pepper
             this.button_settings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_settings.FlatAppearance.BorderSize = 0;
             this.button_settings.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_settings.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold);
+            this.button_settings.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_settings.Location = new System.Drawing.Point(3, 436);
             this.button_settings.Name = "button_settings";
             this.button_settings.Size = new System.Drawing.Size(884, 50);
@@ -996,7 +999,7 @@ namespace Pepper
             this.label_title.AutoSize = true;
             this.tableLayoutPanel_menu.SetColumnSpan(this.label_title, 3);
             this.label_title.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_title.Font = new System.Drawing.Font("Segoe Print", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_title.Font = new System.Drawing.Font("Segoe Print", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_title.ForeColor = System.Drawing.Color.DarkRed;
             this.label_title.Location = new System.Drawing.Point(3, 100);
             this.label_title.Name = "label_title";
@@ -1008,8 +1011,8 @@ namespace Pepper
             // 
             // panel_view
             // 
-            this.panel_view.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel_view.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_view.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(127)))), ((int)(((byte)(127)))));
             this.panel_view.Controls.Add(this.tableLayoutPanel_view);
@@ -1048,7 +1051,7 @@ namespace Pepper
             this.button_save_picture.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_save_picture.FlatAppearance.BorderSize = 0;
             this.button_save_picture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_save_picture.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold);
+            this.button_save_picture.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_save_picture.Location = new System.Drawing.Point(453, 439);
             this.button_save_picture.Name = "button_save_picture";
             this.button_save_picture.Size = new System.Drawing.Size(144, 44);
@@ -1063,7 +1066,7 @@ namespace Pepper
             this.button_right.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_right.FlatAppearance.BorderSize = 0;
             this.button_right.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_right.Font = new System.Drawing.Font("Cascadia Mono Light", 14.25F);
+            this.button_right.Font = new System.Drawing.Font("Cascadia Mono Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button_right.Location = new System.Drawing.Point(423, 439);
             this.button_right.Name = "button_right";
             this.button_right.Size = new System.Drawing.Size(24, 44);
@@ -1078,7 +1081,7 @@ namespace Pepper
             this.button_pause.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_pause.FlatAppearance.BorderSize = 0;
             this.button_pause.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_pause.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold);
+            this.button_pause.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_pause.Location = new System.Drawing.Point(183, 439);
             this.button_pause.Name = "button_pause";
             this.button_pause.Size = new System.Drawing.Size(234, 44);
@@ -1093,7 +1096,7 @@ namespace Pepper
             this.button_left.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_left.FlatAppearance.BorderSize = 0;
             this.button_left.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_left.Font = new System.Drawing.Font("Cascadia Mono Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_left.Font = new System.Drawing.Font("Cascadia Mono Light", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button_left.Location = new System.Drawing.Point(153, 439);
             this.button_left.Name = "button_left";
             this.button_left.Size = new System.Drawing.Size(24, 44);
@@ -1108,7 +1111,7 @@ namespace Pepper
             this.button_close_view.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_close_view.FlatAppearance.BorderSize = 0;
             this.button_close_view.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_close_view.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold);
+            this.button_close_view.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_close_view.Location = new System.Drawing.Point(3, 439);
             this.button_close_view.Name = "button_close_view";
             this.button_close_view.Size = new System.Drawing.Size(144, 44);

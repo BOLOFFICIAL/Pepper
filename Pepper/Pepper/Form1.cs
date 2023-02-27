@@ -9,7 +9,6 @@ using System.Reflection;
 using System.Windows.Forms;
 using Yolov5Net.App;
 
-
 namespace Pepper
 {
     public partial class MainForm : Form
@@ -32,6 +31,7 @@ namespace Pepper
         private Setting setting = new Setting();    // Объект настроек
         private string directory = "";
         private List<string> files_directory = null;
+        public static List<string> labels;
         private int index_file_in_directory = 0;
 
         #endregion
@@ -46,6 +46,7 @@ namespace Pepper
 
         private void Initialization()
         {
+            labels = new List<string>();
             panel_settings.Location = new System.Drawing.Point(0, panel_menu.Height);
             openFileDialog1.FileName = "";
             application_puth = Application.StartupPath;
@@ -292,6 +293,38 @@ namespace Pepper
             {
                 panel_settings.Location = new System.Drawing.Point(0, panel_settings.Location.Y - speed_animation);
             }
+        }
+
+        private void CheckBoxLabels(string label)
+        {
+            if (labels.Contains(label))
+            {
+                labels.Remove(label);
+            }
+            else
+            {
+                labels.Add(label);
+            }
+        }
+
+        private void checkBox_rot_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxLabels("rot");
+        }
+
+        private void checkBox_alternariosis_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxLabels("alternariosis");
+        }
+
+        private void checkBox_cracking_pulp_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxLabels("cracking to pulp");
+        }
+
+        private void checkBox_qualitative_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBoxLabels("qualitative");
         }
 
         private void Replase()
@@ -591,5 +624,7 @@ namespace Pepper
         }
 
         #endregion
+
+        
     }
 }
