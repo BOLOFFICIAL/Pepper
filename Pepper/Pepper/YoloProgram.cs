@@ -24,14 +24,14 @@ namespace Yolov5Net.App
                 {
                     double score = Math.Round(prediction.Score, 2);
 
-                    graphics.DrawRectangles(new Pen(prediction.Label.Color, 5),
+                    graphics.DrawRectangles(new Pen(prediction.Label.Color, 4),
                         new[] { prediction.Rectangle });
 
-                    var (x, y) = (prediction.Rectangle.X - 3, prediction.Rectangle.Y - 23);
+                    var (x, y) = (prediction.Rectangle.X + 3, prediction.Rectangle.Y + 3);
                     var size = 16 * (int)((image.Width * image.Height) / 2073600);
                     if (size < 16) 
                     {
-                        size = 16;
+                        size = 10;
                     }
                     graphics.DrawString($"{prediction.Label.Name.ToUpper().First()} ({score})",
                     new Font("Consolas", size, GraphicsUnit.Pixel), new SolidBrush(prediction.Label.Color),
