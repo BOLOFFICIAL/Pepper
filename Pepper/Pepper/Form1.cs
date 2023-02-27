@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
 using System;
@@ -6,8 +7,10 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Media;
 using System.Reflection;
+using System.Reflection.Emit;
 using System.Windows.Forms;
 using Yolov5Net.App;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Pepper
 {
@@ -79,6 +82,7 @@ namespace Pepper
             checkBox_alternariosis.Checked = setting.alternariosis;
             checkBox_cracking_pulp.Checked = setting.cracking_pulp;
             checkBox_qualitative.Checked = setting.qualitative;
+            labels = setting.labels;
         }
 
         private void Sound(string sound)
@@ -297,6 +301,7 @@ namespace Pepper
 
         private void CheckBoxLabels(string label)
         {
+            labels = (labels is null) ? new List<string>() : labels;
             if (labels.Contains(label))
             {
                 labels.Remove(label);
@@ -327,26 +332,44 @@ namespace Pepper
             CheckBoxLabels("qualitative");
         }
 
+        private void checkBox_detection_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox_detection.Checked)
+            {
+                checkBox_rot.Enabled = true;
+                checkBox_qualitative.Enabled = true;
+                checkBox_alternariosis.Enabled = true;
+                checkBox_cracking_pulp.Enabled = true;
+            }
+            else
+            {
+                checkBox_rot.Enabled = false;
+                checkBox_qualitative.Enabled = false;
+                checkBox_alternariosis.Enabled = false;
+                checkBox_cracking_pulp.Enabled = false;
+            }
+        }
+
         private void Replase()
         {
             if (start)
             {
-                int x = 23;
-                checkBox_rot.Location = new System.Drawing.Point(x, 246);
-                checkBox_alternariosis.Location = new System.Drawing.Point(x, 282);
-                checkBox_cracking_pulp.Location = new System.Drawing.Point(x, 318);
-                checkBox_qualitative.Location = new System.Drawing.Point(x, 354);
+                int x = 20;
+                checkBox_rot.Location = new System.Drawing.Point(x, 271);
+                checkBox_alternariosis.Location = new System.Drawing.Point(x, 307);
+                checkBox_cracking_pulp.Location = new System.Drawing.Point(x, 343);
+                checkBox_qualitative.Location = new System.Drawing.Point(x, 379);
 
                 label_theme.Height = 56;
                 radioButton_dark.Location = new System.Drawing.Point(129, 145);
             }
             else
             {
-                int y = 246;
-                checkBox_rot.Location = new System.Drawing.Point(23, 246);
-                checkBox_alternariosis.Location = new System.Drawing.Point(123, y);
-                checkBox_cracking_pulp.Location = new System.Drawing.Point(304, y);
-                checkBox_qualitative.Location = new System.Drawing.Point(556, y);
+                int y = 271;
+                checkBox_rot.Location = new System.Drawing.Point(20, 271);
+                checkBox_alternariosis.Location = new System.Drawing.Point(140, y);
+                checkBox_cracking_pulp.Location = new System.Drawing.Point(339, y);
+                checkBox_qualitative.Location = new System.Drawing.Point(612, y);
 
                 label_theme.Height = 25;
                 radioButton_dark.Location = new System.Drawing.Point(271, 114);
@@ -379,9 +402,11 @@ namespace Pepper
             setting.alternariosis = checkBox_alternariosis.Checked;
             setting.cracking_pulp = checkBox_cracking_pulp.Checked;
             setting.qualitative = checkBox_qualitative.Checked;
+            setting.labels = labels;
             using (var sw = new StreamWriter(Application.StartupPath + @"\BadPepper.json"))
             {
-                sw.WriteLine(JsonConvert.SerializeObject(setting));
+                var json = JToken.Parse(JsonConvert.SerializeObject(setting));
+                sw.WriteLine(json);
             }
         }
 
@@ -480,7 +505,7 @@ namespace Pepper
             }
             if (button_pause.Text == "Распознать")
             {
-                pictureBox_view.Image = Yolov5Net.App.ImageYolo.GetImage(Image.FromFile(openFileDialog1.FileName));
+                pictureBox_view.Image = (checkBox_detection.Checked) ? Yolov5Net.App.ImageYolo.GetImage(Image.FromFile(openFileDialog1.FileName)) : Image.FromFile(openFileDialog1.FileName);
             }
         }
 
@@ -488,20 +513,19 @@ namespace Pepper
         {
             try
             {
-                capture = new VideoCapture(openFileDialog1.FileName);
                 using (Mat frame = new Mat()) 
                 {
                     while (play && frames < frame_count)
                     {
-                        frames += 10;
+                        frames += ((checkBox_detection.Checked && labels.Count > 0)) ? 10 : 1;
                         capture.Set(CaptureProperty.PosFrames, frames);
                         capture.Read(frame);
                         if (frame.Empty())
                         {
                             continue;
                         }
-                        pictureBox_view.Image = Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame));
-                        await Task.Delay(30);
+                        pictureBox_view.Image = ((checkBox_detection.Checked && labels.Count > 0)) ? Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame)) : (BitmapConverter.ToBitmap(frame));
+                        await Task.Delay(1);
                     }
                     if (!(frames < frame_count))
                     {
@@ -531,8 +555,11 @@ namespace Pepper
                     {
                         index_file_in_directory = 0;
                     }
-                    pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
-                    openFileDialog1.FileName = files_directory[index_file_in_directory];
+                    else 
+                    {
+                        pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
+                        openFileDialog1.FileName = files_directory[index_file_in_directory];
+                    }
                 }
                 catch(Exception ex) 
                 {
@@ -549,7 +576,7 @@ namespace Pepper
                 }
                 capture.Set(CaptureProperty.PosFrames, frames);
                 capture.Read(frame);
-                pictureBox_view.Image = Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame));
+                pictureBox_view.Image = (checkBox_detection.Checked && labels.Count > 0) ? Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame)) : (BitmapConverter.ToBitmap(frame));
             }
         }
 
@@ -566,8 +593,11 @@ namespace Pepper
                     {
                         index_file_in_directory = files_directory.Count-1;
                     }
-                    pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
-                    openFileDialog1.FileName = files_directory[index_file_in_directory];
+                    else 
+                    {
+                        pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
+                        openFileDialog1.FileName = files_directory[index_file_in_directory];
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -584,7 +614,7 @@ namespace Pepper
                 }
                 capture.Set(CaptureProperty.PosFrames, frames);
                 capture.Read(frame);
-                pictureBox_view.Image = Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame));
+                pictureBox_view.Image = (checkBox_detection.Checked && labels.Count > 0) ? Yolov5Net.App.ImageYolo.GetImage(BitmapConverter.ToBitmap(frame)) : (BitmapConverter.ToBitmap(frame));
             }
         }
 
@@ -605,14 +635,14 @@ namespace Pepper
                     pictureBox_view.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox_view.Image = Properties.Resources.flash;
                     Sound("Picture");
-                    await Task.Delay(100);
+                    await Task.Delay(50);
                     pictureBox_view.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox_view.Image = tmp_image;
                 }
-                catch (Exception ex)
+                catch
                 {
                     Sound("Error");
-                    MessageBox.Show("Не удалось сохранить картинку\n"+ ex.Message);
+                    MessageBox.Show("Не удалось сохранить картинку");
                 }
             }
             else
@@ -622,6 +652,7 @@ namespace Pepper
             play = video;
             ReadFrames();
         }
+
 
         #endregion
 

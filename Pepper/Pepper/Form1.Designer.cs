@@ -618,6 +618,7 @@ namespace Pepper
             this.panel_main = new System.Windows.Forms.Panel();
             this.panel_menu = new System.Windows.Forms.Panel();
             this.panel_settings = new System.Windows.Forms.Panel();
+            this.checkBox_detection = new System.Windows.Forms.CheckBox();
             this.checkBox_qualitative = new System.Windows.Forms.CheckBox();
             this.checkBox_cracking_pulp = new System.Windows.Forms.CheckBox();
             this.checkBox_alternariosis = new System.Windows.Forms.CheckBox();
@@ -741,6 +742,7 @@ namespace Pepper
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel_settings.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_settings.Controls.Add(this.checkBox_detection);
             this.panel_settings.Controls.Add(this.checkBox_qualitative);
             this.panel_settings.Controls.Add(this.checkBox_cracking_pulp);
             this.panel_settings.Controls.Add(this.checkBox_alternariosis);
@@ -760,16 +762,30 @@ namespace Pepper
             this.panel_settings.Size = new System.Drawing.Size(890, 489);
             this.panel_settings.TabIndex = 1;
             // 
+            // checkBox_detection
+            // 
+            this.checkBox_detection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.checkBox_detection.Checked = true;
+            this.checkBox_detection.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_detection.Font = new System.Drawing.Font("Cascadia Mono", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.checkBox_detection.Location = new System.Drawing.Point(20, 230);
+            this.checkBox_detection.Name = "checkBox_detection";
+            this.checkBox_detection.Size = new System.Drawing.Size(867, 35);
+            this.checkBox_detection.TabIndex = 0;
+            this.checkBox_detection.Text = "Распознавать";
+            this.checkBox_detection.CheckedChanged += new System.EventHandler(this.checkBox_detection_CheckedChanged);
+            // 
             // checkBox_qualitative
             // 
             this.checkBox_qualitative.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox_qualitative.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_qualitative.Location = new System.Drawing.Point(23, 354);
+            this.checkBox_qualitative.Location = new System.Drawing.Point(20, 379);
             this.checkBox_qualitative.Name = "checkBox_qualitative";
             this.checkBox_qualitative.Size = new System.Drawing.Size(867, 30);
             this.checkBox_qualitative.TabIndex = 16;
-            this.checkBox_qualitative.Text = "Качественные";
+            this.checkBox_qualitative.Text = "(Q)Качественны ";
             this.checkBox_qualitative.UseVisualStyleBackColor = true;
             this.checkBox_qualitative.CheckedChanged += new System.EventHandler(this.checkBox_qualitative_CheckedChanged);
             // 
@@ -778,11 +794,11 @@ namespace Pepper
             this.checkBox_cracking_pulp.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox_cracking_pulp.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_cracking_pulp.Location = new System.Drawing.Point(23, 318);
+            this.checkBox_cracking_pulp.Location = new System.Drawing.Point(20, 343);
             this.checkBox_cracking_pulp.Name = "checkBox_cracking_pulp";
             this.checkBox_cracking_pulp.Size = new System.Drawing.Size(867, 30);
             this.checkBox_cracking_pulp.TabIndex = 15;
-            this.checkBox_cracking_pulp.Text = "Растресканные до мякоти";
+            this.checkBox_cracking_pulp.Text = "(C)Растресканные до мякоти";
             this.checkBox_cracking_pulp.UseVisualStyleBackColor = true;
             this.checkBox_cracking_pulp.CheckedChanged += new System.EventHandler(this.checkBox_cracking_pulp_CheckedChanged);
             // 
@@ -791,11 +807,11 @@ namespace Pepper
             this.checkBox_alternariosis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox_alternariosis.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_alternariosis.Location = new System.Drawing.Point(23, 282);
+            this.checkBox_alternariosis.Location = new System.Drawing.Point(20, 307);
             this.checkBox_alternariosis.Name = "checkBox_alternariosis";
             this.checkBox_alternariosis.Size = new System.Drawing.Size(867, 30);
             this.checkBox_alternariosis.TabIndex = 14;
-            this.checkBox_alternariosis.Text = "Альтернариозные";
+            this.checkBox_alternariosis.Text = "(A)Альтернариозные";
             this.checkBox_alternariosis.UseVisualStyleBackColor = true;
             this.checkBox_alternariosis.CheckedChanged += new System.EventHandler(this.checkBox_alternariosis_CheckedChanged);
             // 
@@ -804,11 +820,11 @@ namespace Pepper
             this.checkBox_rot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.checkBox_rot.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.checkBox_rot.Location = new System.Drawing.Point(23, 246);
+            this.checkBox_rot.Location = new System.Drawing.Point(20, 271);
             this.checkBox_rot.Name = "checkBox_rot";
             this.checkBox_rot.Size = new System.Drawing.Size(867, 30);
             this.checkBox_rot.TabIndex = 13;
-            this.checkBox_rot.Text = "Гнилые";
+            this.checkBox_rot.Text = "(R)Гнилые";
             this.checkBox_rot.UseVisualStyleBackColor = true;
             this.checkBox_rot.CheckedChanged += new System.EventHandler(this.checkBox_rot_CheckedChanged);
             // 
@@ -1208,5 +1224,6 @@ namespace Pepper
         private Button button_left;
         private PictureBox pictureBox_view;
         private Button button_close_view;
+        private CheckBox checkBox_detection;
     }
 }

@@ -15,5 +15,6 @@ namespace Pepper
         public bool alternariosis = false;
         public bool cracking_pulp = false;
         public bool qualitative = false;
+        public List<string> labels;
     }
 }
