@@ -100,7 +100,11 @@ namespace Pepper
                 string[] fileEntries = Directory.GetFiles(directoryPath);
                 foreach (string fileName in fileEntries)
                 {
-                    fileList.Add(fileName);
+                    var type = new FileInfo(fileName).Extension;
+                    if (type == ".jpg" || type == ".png" || type == ".jpeg") 
+                    {
+                        fileList.Add(fileName);
+                    }  
                 }
             }
             catch (Exception e)
@@ -487,13 +491,20 @@ namespace Pepper
             Sound("Click");
             if (ispicture) 
             {
-                index_file_in_directory--;
-                if (index_file_in_directory < 0) 
+                try 
                 {
-                    index_file_in_directory = 0;
+                    index_file_in_directory--;
+                    if (index_file_in_directory < 0)
+                    {
+                        index_file_in_directory = 0;
+                    }
+                    pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
+                    openFileDialog1.FileName = files_directory[index_file_in_directory];
                 }
-                pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
-                openFileDialog1.FileName = files_directory[index_file_in_directory];
+                catch(Exception ex) 
+                {
+                    MessageBox.Show(index_file_in_directory+"\n"+ex.Message);
+                }
                 return;
             }
             using (Mat frame = new Mat()) 
@@ -512,15 +523,23 @@ namespace Pepper
         private void button_right_Click(object sender, EventArgs e)
         {
             Sound("Click");
+
             if (ispicture)
             {
-                index_file_in_directory++;
-                if (index_file_in_directory > files_directory.Count)
+                try
                 {
-                    index_file_in_directory = files_directory.Count;
+                    index_file_in_directory++;
+                    if (index_file_in_directory > files_directory.Count-1)
+                    {
+                        index_file_in_directory = files_directory.Count-1;
+                    }
+                    pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
+                    openFileDialog1.FileName = files_directory[index_file_in_directory];
                 }
-                pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
-                openFileDialog1.FileName = files_directory[index_file_in_directory];
+                catch (Exception ex)
+                {
+                    MessageBox.Show(index_file_in_directory + "\n" + ex.Message);
+                }
                 return;
             }
             using (Mat frame = new Mat())
