@@ -34,7 +34,7 @@ namespace Pepper
         private Setting setting = new Setting();    // Объект настроек
         private string directory = "";
         private List<string> files_directory = null;
-        public static List<string> labels;
+        public static List<string> labels = null;
         private int index_file_in_directory = 0;
 
         #endregion
@@ -230,6 +230,7 @@ namespace Pepper
                     }
                     if (ispicture)
                     {
+                        button_pause.Enabled = (checkBox_detection.Checked) ? true : false;
                         pictureBox_view.Image = Image.FromFile(openFileDialog1.FileName);
                         button_pause.Text = "Распознать";
                         capture.Dispose();
@@ -237,6 +238,7 @@ namespace Pepper
                     }
                     else
                     {
+                        button_pause.Enabled = true;
                         button_left.Visible = true;
                         button_pause.Text = "Просмотр";
                         button_right.Visible = true;
@@ -336,17 +338,22 @@ namespace Pepper
         {
             if (checkBox_detection.Checked)
             {
-                checkBox_rot.Enabled = true;
-                checkBox_qualitative.Enabled = true;
-                checkBox_alternariosis.Enabled = true;
-                checkBox_cracking_pulp.Enabled = true;
+                checkBox_rot.Visible = true;
+                checkBox_qualitative.Visible = true;
+                checkBox_alternariosis.Visible = true;
+                checkBox_cracking_pulp.Visible = true;
+                button_pause.Enabled = true;
             }
             else
             {
-                checkBox_rot.Enabled = false;
-                checkBox_qualitative.Enabled = false;
-                checkBox_alternariosis.Enabled = false;
-                checkBox_cracking_pulp.Enabled = false;
+                checkBox_rot.Visible = false;
+                checkBox_qualitative.Visible = false;
+                checkBox_alternariosis.Visible = false;
+                checkBox_cracking_pulp.Visible = false;
+                if (ispicture) 
+                {
+                    button_pause.Enabled = false;
+                }
             }
         }
 
@@ -655,7 +662,5 @@ namespace Pepper
 
 
         #endregion
-
-        
     }
 }

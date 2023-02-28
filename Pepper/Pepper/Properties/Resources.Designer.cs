@@ -105,5 +105,15 @@ namespace Pepper.Properties {
                 return ResourceManager.GetStream("picture", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] YoloV5s_DC {
+            get {
+                object obj = ResourceManager.GetObject("YoloV5s_DC", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
