@@ -832,7 +832,7 @@ namespace Pepper
             // 
             this.radioButton_dark.AutoSize = true;
             this.radioButton_dark.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.radioButton_dark.Location = new System.Drawing.Point(271, 114);
+            this.radioButton_dark.Location = new System.Drawing.Point(129, 145);
             this.radioButton_dark.Name = "radioButton_dark";
             this.radioButton_dark.Size = new System.Drawing.Size(127, 25);
             this.radioButton_dark.TabIndex = 11;

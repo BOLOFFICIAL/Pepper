@@ -2,15 +2,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OpenCvSharp;
 using OpenCvSharp.Extensions;
-using System;
-using System.Drawing.Imaging;
-using System.IO;
 using System.Media;
-using System.Reflection;
-using System.Reflection.Emit;
-using System.Windows.Forms;
-using Yolov5Net.App;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Pepper
 {
@@ -106,10 +98,10 @@ namespace Pepper
                 foreach (string fileName in fileEntries)
                 {
                     var type = new FileInfo(fileName).Extension;
-                    if (type == ".jpg" || type == ".png" || type == ".jpeg") 
+                    if (type == ".jpg" || type == ".png" || type == ".jpeg")
                     {
                         fileList.Add(fileName);
-                    }  
+                    }
                 }
             }
             catch (Exception e)
@@ -224,9 +216,9 @@ namespace Pepper
                     {
                         ispicture = true;
                     }
-                    else 
-                    { 
-                        ispicture = false; 
+                    else
+                    {
+                        ispicture = false;
                     }
                     if (ispicture)
                     {
@@ -292,7 +284,7 @@ namespace Pepper
 
         private void OpenSettings()
         {
-            Replase();
+            //Replase();
             open_settings = true;
             speed_animation = wrap ? 5 : 2;
             while (panel_settings.Location.Y > 0)
@@ -350,7 +342,7 @@ namespace Pepper
                 checkBox_qualitative.Visible = false;
                 checkBox_alternariosis.Visible = false;
                 checkBox_cracking_pulp.Visible = false;
-                if (ispicture) 
+                if (ispicture)
                 {
                     button_pause.Enabled = false;
                 }
@@ -520,7 +512,7 @@ namespace Pepper
         {
             try
             {
-                using (Mat frame = new Mat()) 
+                using (Mat frame = new Mat())
                 {
                     while (play && frames < frame_count)
                     {
@@ -542,7 +534,7 @@ namespace Pepper
                             button_pause.Text = "Просмотр";
                         }
                     }
-                }   
+                }
             }
             catch (Exception ex)
             {
@@ -553,28 +545,28 @@ namespace Pepper
         private void button_left_Click(object sender, EventArgs e)
         {
             Sound("Click");
-            if (ispicture) 
+            if (ispicture)
             {
-                try 
+                try
                 {
                     index_file_in_directory--;
                     if (index_file_in_directory < 0)
                     {
                         index_file_in_directory = 0;
                     }
-                    else 
+                    else
                     {
                         pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
                         openFileDialog1.FileName = files_directory[index_file_in_directory];
                     }
                 }
-                catch(Exception ex) 
+                catch (Exception ex)
                 {
-                    MessageBox.Show(index_file_in_directory+"\n"+ex.Message);
+                    MessageBox.Show(index_file_in_directory + "\n" + ex.Message);
                 }
                 return;
             }
-            using (Mat frame = new Mat()) 
+            using (Mat frame = new Mat())
             {
                 frames -= (int)numericUpDown_speed.Value;
                 if (frames < 0)
@@ -596,11 +588,11 @@ namespace Pepper
                 try
                 {
                     index_file_in_directory++;
-                    if (index_file_in_directory > files_directory.Count-1)
+                    if (index_file_in_directory > files_directory.Count - 1)
                     {
-                        index_file_in_directory = files_directory.Count-1;
+                        index_file_in_directory = files_directory.Count - 1;
                     }
-                    else 
+                    else
                     {
                         pictureBox_view.Image = Image.FromFile(files_directory[index_file_in_directory]);
                         openFileDialog1.FileName = files_directory[index_file_in_directory];
@@ -659,8 +651,6 @@ namespace Pepper
             play = video;
             ReadFrames();
         }
-
-
         #endregion
     }
 }
