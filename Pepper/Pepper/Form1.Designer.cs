@@ -612,6 +612,7 @@ namespace Pepper
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.button_wrap = new System.Windows.Forms.Button();
             this.button_unwrap = new System.Windows.Forms.Button();
             this.button_close = new System.Windows.Forms.Button();
@@ -1167,6 +1168,7 @@ namespace Pepper
             this.DoubleBuffered = true;
             this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Text = "BadPepper";

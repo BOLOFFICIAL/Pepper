@@ -6,7 +6,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>DALL·E 2023-02-12 23.41.45 - Draw a picture of Bulgarian pepper in the form of a zombie.ico</ApplicationIcon>
   </PropertyGroup>
+  <ItemGroup>
+    <Content Include="DALL·E 2023-02-12 23.41.45 - Draw a picture of Bulgarian pepper in the form of a zombie.ico" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.ML" Version="1.7.1" />
     <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.14.0" />
