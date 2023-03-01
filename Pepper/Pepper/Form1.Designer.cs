@@ -835,9 +835,9 @@ namespace Pepper
             this.radioButton_dark.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.radioButton_dark.Location = new System.Drawing.Point(129, 145);
             this.radioButton_dark.Name = "radioButton_dark";
-            this.radioButton_dark.Size = new System.Drawing.Size(127, 25);
+            this.radioButton_dark.Size = new System.Drawing.Size(82, 25);
             this.radioButton_dark.TabIndex = 11;
-            this.radioButton_dark.Text = "Темная тема";
+            this.radioButton_dark.Text = "Темная";
             this.radioButton_dark.UseVisualStyleBackColor = true;
             this.radioButton_dark.Click += new System.EventHandler(this.radioButton_dark_Click);
             // 
@@ -848,10 +848,10 @@ namespace Pepper
             this.radioButton_light.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.radioButton_light.Location = new System.Drawing.Point(129, 114);
             this.radioButton_light.Name = "radioButton_light";
-            this.radioButton_light.Size = new System.Drawing.Size(136, 25);
+            this.radioButton_light.Size = new System.Drawing.Size(91, 25);
             this.radioButton_light.TabIndex = 10;
             this.radioButton_light.TabStop = true;
-            this.radioButton_light.Text = "Светлая тема";
+            this.radioButton_light.Text = "Светлая";
             this.radioButton_light.UseVisualStyleBackColor = true;
             this.radioButton_light.Click += new System.EventHandler(this.radioButton_light_Click);
             // 
@@ -860,9 +860,9 @@ namespace Pepper
             this.label_theme.Font = new System.Drawing.Font("Cascadia Mono", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label_theme.Location = new System.Drawing.Point(0, 114);
             this.label_theme.Name = "label_theme";
-            this.label_theme.Size = new System.Drawing.Size(120, 25);
+            this.label_theme.Size = new System.Drawing.Size(120, 56);
             this.label_theme.TabIndex = 7;
-            this.label_theme.Text = "Оформление";
+            this.label_theme.Text = "Тема";
             this.label_theme.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label_peppers

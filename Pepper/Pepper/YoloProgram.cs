@@ -12,7 +12,7 @@ namespace Yolov5Net.App
         }
         public static Image EditImage(Image image)
         {
-            using var scorer = new YoloScorer<YoloCocoP5Model>(Pepper.Properties.Resources.Yolo);
+            using var scorer = new YoloScorer<YoloCocoP5Model>(Pepper.Properties.Resources.YoloV5s_DC);
             List<YoloPrediction> predictions = scorer.Predict(image);
             using var graphics = Graphics.FromImage(image);
             foreach (var prediction in predictions)
