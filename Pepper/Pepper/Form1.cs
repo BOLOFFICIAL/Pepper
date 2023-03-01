@@ -516,7 +516,8 @@ namespace Pepper
                 {
                     while (play && frames < frame_count)
                     {
-                        frames += ((checkBox_detection.Checked && labels.Count > 0)) ? 10 : 1;
+                        //frames += ((checkBox_detection.Checked && labels.Count > 0)) ? 10 : 1;
+                        frames++;
                         capture.Set(CaptureProperty.PosFrames, frames);
                         capture.Read(frame);
                         if (frame.Empty())
