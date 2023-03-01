@@ -10,7 +10,7 @@ namespace Yolov5Net.Scorer.Models
         public override int Height { get; set; } = 640;
         public override int Depth { get; set; } = 3;
 
-        public override int Dimensions { get; set; } = 9;
+        public override int Dimensions { get; set; } = 10;
 
         public override int[] Strides { get; set; } = new int[] { 8, 16, 32 };
 
@@ -31,6 +31,7 @@ namespace Yolov5Net.Scorer.Models
 
         public override List<YoloLabel> Labels { get; set; } = new List<YoloLabel>()
         {
+            new YoloLabel { Id = 1, Name = "0", Color = Color.Black },
             new YoloLabel { Id = 1, Name = "alternariosis", Color = Color.Red },
             new YoloLabel { Id = 2, Name = "cracking to pulp", Color = Color.Blue },
             new YoloLabel { Id = 3, Name = "qualitative", Color = Color.Yellow },
