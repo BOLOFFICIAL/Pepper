@@ -109,9 +109,9 @@ namespace Pepper.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Byte[].
         /// </summary>
-        internal static byte[] YoloV5s_DC {
+        internal static byte[] Yolo {
             get {
-                object obj = ResourceManager.GetObject("YoloV5s_DC", resourceCulture);
+                object obj = ResourceManager.GetObject("Yolo", resourceCulture);
                 return ((byte[])(obj));
             }
         }
